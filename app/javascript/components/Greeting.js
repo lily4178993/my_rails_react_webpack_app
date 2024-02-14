@@ -8,13 +8,23 @@ function Greeting() {
 
   useEffect(() => {
     dispatch(fetchGreeting());
-  }
-  , [dispatch]);
+  }, [dispatch]);
+
+  const refreshGreeting = () => {
+    dispatch(fetchGreeting());
+  };
 
   return (
-    <div>
-      {greeting}
-    </div>
+    <>
+      <h1 style={{fontSize: '4rem'}}>{greeting}</h1>
+      <button
+        type="button"
+        onClick={refreshGreeting}
+        style={{fontSize: '2rem', padding: '1rem', marginTop: '1rem'}}
+      >
+        Refresh
+      </button>
+    </>
   );
 };
 
