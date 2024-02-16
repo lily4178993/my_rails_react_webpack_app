@@ -1,28 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGreeting } from '../redux/Greeting/greetingSlice';
 
 function Greeting() {
   const dispatch = useDispatch();
-  const greeting = useSelector((state) => state.greeting.greeting);
+  const { loading, greeting } = useSelector((state) => state.greeting);
 
-  useEffect(() => {
+  const loadGreeting = useCallback(() => {
     dispatch(fetchGreeting());
   }, [dispatch]);
 
-  const refreshGreeting = () => {
-    dispatch(fetchGreeting());
-  };
+  useEffect(() => {
+    loadGreeting();
+  }, [loadGreeting]);
 
   return (
     <>
-      <h1 style={{fontSize: '4rem'}}>{greeting}</h1>
+      <h1
+        className={loading ? '' : 'fade-in'}
+        data-greeting-message={loading ? '' : greeting}
+      >
+        {loading ? '...' : greeting}
+      </h1>
       <button
         type="button"
-        onClick={refreshGreeting}
-        style={{fontSize: '2rem', padding: '1rem', marginTop: '1rem'}}
+        onClick={loadGreeting}
       >
-        Refresh
+        Click me for a new greeting
       </button>
     </>
   );
