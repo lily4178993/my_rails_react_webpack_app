@@ -1,20 +1,17 @@
-// Entry point for the build script in your package.json
-/* import "@hotwired/turbo-rails"
-import "./controllers" */
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './redux/store/store';
 import App from './components/App';
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <Router>
+  const root = document.getElementById('root');
+  if (root) {
+    const appRoot = ReactDOM.createRoot(root);
+    appRoot.render(
+      <Provider store={store}>
         <App />
-      </Router>
-    </Provider>,
-    document.getElementById('root')
-  );
+      </Provider>
+    );
+  }
 });
