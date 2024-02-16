@@ -102,8 +102,7 @@ rails db:seed
 Start the development server:
 
 ```bash
-npm run build
-rails s
+npm run start
 ```
 
 Open `http://localhost:3000/` to view it in your browser.

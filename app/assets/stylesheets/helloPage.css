@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #292626;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.265rem;
+  color: #dcdcdc;
+  max-width: 250px;
+  position: relative;
+  text-shadow: 1px 1px 0 #6b8e23, -1px -1px 0 #000;
+}
+
+h1::after {
+  content: attr(data-greeting-message);
+  position: absolute;
+  font-size: 6rem;
+  color: #273624;
+  bottom: -1rem;
+  left: -0.5rem;
+  z-index: -1;
+}
+
+button {
+  background-color: transparent;
+  color: #6b8e23;
+  border-color: #a4f700;
+  font-size: 2rem;
+  padding: 1rem;
+  margin-top: 3rem;
+  box-shadow: 5px 9px 11px 0 #000;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+  animation: fadeIn ease 1s;
+  animation-fill-mode: forwards;
+}
+
+button:hover,
+button:focus-visible {
+  background-color: #6b8e23;
+  color: #a4f700;
+  border-color: #a4f700;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
